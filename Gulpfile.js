@@ -4,6 +4,7 @@ var react = require( 'gulp-react' );
 var concat = require( 'gulp-concat' );
 var sourcemaps = require( 'gulp-sourcemaps' );
 var filter = require( 'gulp-filter' );
+var rename = require( 'gulp-rename' );
 
 gulp.task( 'connect', function() {
   connect.server();
@@ -36,9 +37,30 @@ gulp.task( 'vendor', function() {
         'node_modules/type/dist/type.js',
         'node_modules/lodash/index.js'
       ])
+      .pipe(
+        rename( function( path ) {
+          if ( path.basename === 'index' ) {
+            path.basename = 'lodash';
+          }
+          return path;
+        })
+      )
+      .pipe( gulp.dest( 'assets/vendor' ) )
+      .pipe( sourcemaps.init() )
       .pipe( concat( 'vendor.js' ) )
+      .pipe(
+        sourcemaps.write( '.', {
+          includeContent: false,
+          sourceRoot: '/assets/vendor'
+        })
+      )
       .pipe( gulp.dest( 'assets' ) )
   );
+});
+
+gulp.task( "watch", [ "compile" ], function() {
+  connect.server();
+  gulp.watch([ "lib/**/*" ], [ "compile" ]);
 });
 
 gulp.task( 'default', [ 'connect' ] );
