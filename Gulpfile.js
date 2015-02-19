@@ -6,10 +6,6 @@ var sourcemaps = require( 'gulp-sourcemaps' );
 var filter = require( 'gulp-filter' );
 var rename = require( 'gulp-rename' );
 
-gulp.task( 'connect', function() {
-  connect.server();
-});
-
 gulp.task( 'compile', function () {
   var jsxFilter = filter( '*.jsx' );
   return (
@@ -63,4 +59,4 @@ gulp.task( "watch", [ "compile" ], function() {
   gulp.watch([ "lib/**/*" ], [ "compile" ]);
 });
 
-gulp.task( 'default', [ 'connect' ] );
+gulp.task( 'default', [ 'compile' ] );
