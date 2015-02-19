@@ -1,0 +1,24 @@
+{
+  "name": "react-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-filter": "^2.0.2",
+    "gulp-react": "^2.0.0",
+    "gulp-sourcemaps": "^1.3.0"
+  },
+  "dependencies": {
+    "lodash": "^3.2.0",
+    "react": "^0.12.2",
+    "type": "git://github.com/stephenbunch/type"
+  }
+}
